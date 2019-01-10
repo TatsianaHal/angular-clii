@@ -2,6 +2,13 @@
   <h1>
     You are Welcome!
   </h1>
-  <app-user></app-user>
+  <app-header></app-header>
+  <app-menu>
+    <p>Hello from {{menu}}</p>
+    <span>Hello from span</span>
+  </app-menu>
+  <p appColour>Color directive</p>
+  <p *appDelay>Delay directive</p>
+  <app-footer appColour *appDelay></app-footer>
 </div>
 

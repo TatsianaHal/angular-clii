@@ -1,0 +1,24 @@
+.red {
+    color: red;
+}
+
+.orange {
+    color: orange;
+}
+
+.yellow {
+    color: yellow;
+}
+
+.blue {
+    color: blue;
+}
+
+input {
+    border: 1px solid black;
+}
+
+button {
+    border: 1px solid black;
+    border-radius: 3px;
+}

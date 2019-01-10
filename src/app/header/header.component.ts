@@ -1,18 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
-export class UserComponent implements OnInit {
+export class HeaderComponent implements OnInit {
 
-  public user = 'user';
   public userClass = 'red';
-  public userObj = {
+  public user = {
     name: 'Tanya',
     lastName: 'Halouchyk'
   };
+
+  public isShown = 'true';
+  // public isShown = 'false';
+
+  public users = [
+    {name: 'Dasha'},
+    {name: 'Slava'},
+    {name: 'Katya'}
+  ];
+  public selectedUser;
 
   constructor() {
     // setTimeout(() => {
