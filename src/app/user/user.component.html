@@ -1,0 +1,9 @@
+<div class='wrapper'>
+  <p [class]='userClass' (click)="onClick('blue')">
+    {{ userObj.name }} works on {{ 5 + 5 }} points!
+  </p>
+  <p>Enter color:</p>
+  <!-- ссылка на элемент при помощи '#': -->
+  <input type='text' #color/>
+  <button type='button' (click)="onClick(color.value)">Change colour</button>
+</div>
