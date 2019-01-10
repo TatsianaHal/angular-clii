@@ -5,6 +5,7 @@ import {
   ComponentFactoryResolver
 } from '@angular/core';
 import { ItemComponent } from './item/item.component';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +17,12 @@ export class AppComponent implements OnInit {
 
   constructor(
     private viewContainerRef: ViewContainerRef,
-    private componentFactoryResolver: ComponentFactoryResolver
+    private componentFactoryResolver: ComponentFactoryResolver,
+    _http: HttpClient
     ) {
+      _http.get('http://api.github.com/search/users').subscribe(result => {
+        console.log('intercepter- result', result);
+      });
   }
 
   ngOnInit() {

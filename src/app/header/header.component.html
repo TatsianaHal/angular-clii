@@ -8,12 +8,14 @@
   <button type='button' (click)="onClick(color.value)">Change colour</button>
 </div>
 
-<button type='button' (click)="isShown = !isShown">Toggle!</button>
-<app-user *ngIf='isShown' [user]='user'></app-user>
-
 <ul>
   <li *ngFor='let user of users'>
       {{ user.name }}
+      <span (click)='removeUser(user.name)'>X</span>
   </li>
 </ul>
+
+<input type='text' #userName />
+<button type='button' (click)="addUser(userName.value); userName.value=''">Add</button>
+
 

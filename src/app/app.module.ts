@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './header/user/user.component';
@@ -9,6 +11,8 @@ import { MenuComponent } from './menu/menu.component';
 import { ColourDirective } from './colour.directive';
 import { DelayDirective } from './delay.directive';
 import { ItemComponent } from './item/item.component';
+import { UserService } from './user.service';
+import { NewInterceptorService } from './new-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -26,9 +30,18 @@ import { ItemComponent } from './item/item.component';
   entryComponents: [ ItemComponent ],
 
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    UserService,
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: NewInterceptorService,
+    multi: true
+  } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
