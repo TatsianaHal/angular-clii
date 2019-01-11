@@ -20,9 +20,9 @@ export class AppComponent implements OnInit {
     private componentFactoryResolver: ComponentFactoryResolver,
     _http: HttpClient
     ) {
-      _http.get('http://api.github.com/search/users').subscribe(result => {
-        console.log('intercepter- result', result);
-      });
+      // _http.get('http://api.github.com/search/users').subscribe(result => {
+      //   console.log('intercepter- result', result);
+      // });
   }
 
   ngOnInit() {
