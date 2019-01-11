@@ -1,0 +1,8 @@
+a {
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+a:last-child {
+    margin-right: 0;
+}

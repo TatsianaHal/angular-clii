@@ -1,7 +1,19 @@
+<a routerLink='' routerLinkActive='active' [routerLinkActiveOptions]='{exact: true}'>Home</a>
+<a routerLink='admin' routerLinkActive='active'>Admin</a>
+<a routerLink='users' routerLinkActive='active' [routerLinkActiveOptions]='{exact: true}'>Users</a>
+<a routerLink='users' routerLinkActive='active' [queryParams]='{p: 333}'>Users & queryParams</a>
+<a routerLink='users/3' routerLinkActive='active'>User 3</a>
+<br>
+<a [routerLink]="[{outlets: {popup: 'login'}}]">Show Popup</a>
+<a [routerLink]="[{outlets: {popup: null}}]">Hide Popup</a>
+<router-outlet></router-outlet>
+<router-outlet name='popup'></router-outlet>
+
 <div style="text-align:center">
   <h1>
     You are Welcome!
   </h1>
+
   <app-header></app-header>
   <app-menu>
     <p>Hello from {{menu}}</p>
