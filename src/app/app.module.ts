@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { HTTP_INTERCEPTORS} from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './header/user/user.component';
@@ -21,6 +22,8 @@ import { ItemComponent } from './item/item.component';
 import { UserService } from './user.service';
 import { NewInterceptorService } from './new-interceptor.service';
 import { AuthGuard } from './auth.guard';
+import { TestingPipe } from './testing.pipe';
+import { TestingDirective } from './testing.directive';
 
 const routs = [
   // роут на стартовую страницу:
@@ -81,7 +84,9 @@ const routs = [
     UserIdComponent,
     ProfileComponent,
     SettingsComponent,
-    LoginComponent
+    LoginComponent,
+    TestingPipe,
+    TestingDirective
   ],
 
   // для подключения динамических компонентов:
@@ -90,8 +95,10 @@ const routs = [
   imports: [
     BrowserModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
 
-    // подключение и инициилизация роута
+    // подключение и инициилизация роута,
     // useHash для поддержки использования хзша в роуте:
     RouterModule.forRoot(routs, {useHash: true})
   ],

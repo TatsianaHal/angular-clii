@@ -14,6 +14,25 @@
     You are Welcome!
   </h1>
 
+  <div>
+    <input [formControl]='nameControl' />
+  </div>
+
+  <fieldset [formGroup]='fullNameControl'>
+      <input formControlName='firstName' />
+      <input formControlName='lastName' />
+  </fieldset>
+
+  <form [formGroup]='userListControl'>
+    <ul formArrayName='users' >
+      <li *ngFor='let userControl of userListControl.controls.users.controls; let i = index'>
+        <input formControlName='{{ i }}'/>
+        <button (click)='removeUserControl(i)' >Remove</button>
+      </li>
+    </ul>
+  </form>
+  <button (click)='addUserControl(i)' >Add User</button>
+
   <app-header></app-header>
   <app-menu>
     <p>Hello from {{menu}}</p>
