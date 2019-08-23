@@ -1,4 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnChanges,
+  OnInit,
+  DoCheck,
+  AfterContentInit,
+  AfterContentChecked,
+  AfterViewInit,
+  AfterViewChecked,
+  OnDestroy,
+  SimpleChanges,
+} from '@angular/core';
 import { UserService } from '../user.service';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -7,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnChanges, OnInit, DoCheck, AfterContentInit,
+AfterContentChecked, AfterViewInit, AfterViewChecked, OnDestroy {
 
   public userClass = 'red';
   public user = {
@@ -21,25 +33,67 @@ export class HeaderComponent implements OnInit {
   public users;
   public selectedUser;
 
+    // should perform only local variable initialization
   constructor(
-    private _userService: UserService) {
+    private _userService: UserService
+  ) {
+    console.log('constructor works');
   }
 
-  ngOnInit() {
+  // вызывается при начальной установке свойств, которые связаны с механизмом привязки +
+  // при любой их переустановке или изменении
+  public ngOnChanges(changes: SimpleChanges) {
+    console.log('OnChanges works, changes:', changes);
+  }
+
+    // вызывается один раз после установки свойств компонента
+  public ngOnInit() {
+    console.log('OnInit works');
     // this.users = this._userService.getAll().subscribe(users => this.users = users);
     this.users = this._userService.getAll();
   }
 
-  onClick(colour) {
+  // вызывается при каждлй проверке изменений свойств компонента сразу после ngOnChanges и ngOnInit
+  public ngDoCheck() {
+    console.log('DoCheck works');
+  }
+
+  // вызывается один раз после ngDoCheck() после вставки содержимого в представление компонента
+  public ngAfterContentInit() {
+    console.log('AfterContentInit works');
+  }
+
+  // вызывается фреймворком Angular при проверке изменений содержимого, которое добавляется в представление компонент
+  public ngAfterContentChecked() {
+    console.log('AfterContentChecked works');
+  }
+
+  // вызывается фреймворком Angular после инициализации представления компонента, а также представлений дочерних компонентов
+  public ngAfterViewInit() {
+    console.log('AfterViewInit works');
+  }
+
+  // вызывается фреймворком Angular после проверки на изменения в представлении компонента,
+  // а также проверки представлений дочерних компонентов
+  public ngAfterViewChecked() {
+    console.log('AfterViewChecked works');
+  }
+
+  // вызывается перед тем, как фреймворк Angular удалит компонент
+  public ngOnDestroy() {
+    console.log('OnDestroy works');
+  }
+
+  public onClick(colour) {
     this.userClass = colour;
   }
 
-  removeUser(name: string) {
+  public removeUser(name: string) {
     this._userService.remove(name);
     this.users = this._userService.getAll();
   }
 
-  addUser(name: string) {
+  public addUser(name: string) {
     if (!name) {
       return;
     }
